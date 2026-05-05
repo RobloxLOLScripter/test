@@ -50,10 +50,35 @@
   /* Center login form */
   div[id="app"] {
     display: flex !important;
+    flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
     min-height: 100vh !important;
     padding: 20px !important;
+    box-sizing: border-box !important;
+    background-color: var(--authBackground) !important;
+  }
+
+  /* Target the outer React wrapper for login */
+  div[id="app"] > div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  /* Fix Pterodactyl's Mascot Container */
+  div[class*="MascotContainer"],
+  div[class*="LoginContainer"] > div:first-child {
+    margin-bottom: 20px !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  img[class*="Mascot"], .login-mascot {
+    max-height: 120px !important;
+    width: auto !important;
   }
 
   /* Login card */
@@ -67,26 +92,37 @@
     border: 1px solid var(--authSecondary) !important;
     border-radius: 16px !important;
     padding: 40px !important;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.6), var(--orangeGlow) !important;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.8), var(--orangeGlow) !important;
     color: var(--authText) !important;
     font-family: var(--font) !important;
-    max-width: 420px;
-    width: 100%;
-    margin: auto !important;
+    width: 100% !important;
+    max-width: 450px !important;
+    min-width: unset !important;
+    margin: 20px auto !important;
     position: relative !important;
     z-index: 10;
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
   }
 
-  /* Auth inputs */
+  /* Auth inputs and labels */
   div[class*="LoginFormContainer"] input,
-  form[class*="LoginContainer"] input {
+  form[class*="LoginContainer"] input,
+  div[class*="LoginFormContainer"] div[class*="Input"],
+  div[class*="LoginContainer"] div[class*="Input"] {
     background-color: var(--authSecondary) !important;
     border: 1px solid var(--authTertiary) !important;
     border-radius: 10px !important;
     color: var(--authText) !important;
-    padding: 12px 16px !important;
+    padding: 14px 18px !important;
     font-family: var(--font) !important;
     transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 48px !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    font-size: 15px !important;
   }
   div[class*="LoginFormContainer"] input:focus,
   form[class*="LoginContainer"] input:focus {
@@ -96,19 +132,25 @@
 
   /* Auth button */
   div[class*="LoginFormContainer"] button[type="submit"],
-  form[class*="LoginContainer"] button[type="submit"] {
+  form[class*="LoginContainer"] button[type="submit"],
+  div[class*="LoginFormContainer"] button,
+  form[class*="LoginContainer"] button {
     background: var(--orangeGradient) !important;
     border: none !important;
     border-radius: 10px !important;
     color: white !important;
     font-weight: 700 !important;
-    padding: 14px !important;
+    padding: 16px !important;
     font-family: var(--font) !important;
     transition: all 0.2s ease;
-    width: 100%;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    width: 100% !important;
+    min-height: 52px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
     box-shadow: 0 4px 14px rgba(255, 122, 0, 0.3) !important;
+    cursor: pointer !important;
+    display: block !important;
+    margin-top: 10px !important;
   }
   div[class*="LoginFormContainer"] button[type="submit"]:hover,
   form[class*="LoginContainer"] button[type="submit"]:hover {
