@@ -169,12 +169,13 @@
   function velionFixGreyBgs() {
     var app = document.getElementById('app');
     if (!app) return;
-    var darkBg = getComputedStyle(document.documentElement).getPropertyValue('--dashboardPrimary').trim() || '#1a1d24';
-    var pageBg = getComputedStyle(document.documentElement).getPropertyValue('--dashboardBackground').trim() || '#111318';
+    var darkBg = getComputedStyle(document.documentElement).getPropertyValue('--dashboardPrimary').trim();
+    if(!darkBg) darkBg = '#0a0a0a';
 
-    app.querySelectorAll('div').forEach(function(el) {
+    app.querySelectorAll('*').forEach(function(el) {
       if (el.closest('.sidebar') || el.closest('#sidebar')) return;
       if (el.closest('[class*="terminal"]') || el.closest('[class*="Console"]')) return;
+
       var bg = getComputedStyle(el).backgroundColor;
       if (!bg || bg === 'transparent' || bg === 'rgba(0, 0, 0, 0)') return;
 
@@ -184,10 +185,10 @@
       var r = parseInt(match[1]), g = parseInt(match[2]), b = parseInt(match[3]);
 
       // Detect grey-ish backgrounds (not too dark, not too light)
-      // Grey = similar R/G/B values, brightness between 40-120
+      // Grey = similar R/G/B values, brightness between 25-130
       var brightness = (r + g + b) / 3;
       var maxDiff = Math.max(r, g, b) - Math.min(r, g, b);
-      if (brightness > 35 && brightness < 130 && maxDiff < 30) {
+      if (brightness > 20 && brightness < 130 && maxDiff < 35) {
         el.style.setProperty('background-color', darkBg, 'important');
       }
     });

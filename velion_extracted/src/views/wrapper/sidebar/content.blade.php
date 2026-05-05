@@ -173,7 +173,12 @@
 </div>
 <div class="velion-user-dropdown" id="velion-user-dropdown">
   <a href="/account" class="velion-dd-item"><i class="bi bi-person"></i> Nastavení účtu</a>
-  <a href="/auth/logout" class="velion-dd-item velion-dd-danger"><i class="bi bi-box-arrow-right"></i> Odhlásit se</a>
+  <a href="#!" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="velion-dd-item velion-dd-danger">
+    <i class="bi bi-box-arrow-right"></i> Odhlásit se
+  </a>
+  <form id="logout-form" action="/auth/logout" method="POST" style="display: none;">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+  </form>
 </div>
 
 <style>

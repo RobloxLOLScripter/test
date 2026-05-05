@@ -324,10 +324,13 @@
   /* ================================================================
      TAILWIND OVERRIDES
      ================================================================ */
-  .bg-neutral-900, .bg-neutral-800, .bg-neutral-700, .bg-gray-900, .bg-gray-800, .bg-zinc-900, .bg-zinc-800, .bg-slate-900, .bg-slate-800 {
+  .bg-neutral-900, .bg-neutral-800, .bg-neutral-700, .bg-gray-900, .bg-gray-800, .bg-zinc-900, .bg-zinc-800, .bg-slate-900, .bg-slate-800,
+  div[class*="bg-neutral-900"], div[class*="bg-gray-900"], div[class*="bg-zinc-900"] {
     background-color: var(--dashboardBackground) !important;
   }
-  .bg-neutral-600, .bg-gray-700, .bg-gray-600, .bg-zinc-700, .bg-slate-700 {
+  .bg-neutral-600, .bg-gray-700, .bg-gray-600, .bg-zinc-700, .bg-slate-700,
+  div[class*="bg-neutral-800"], div[class*="bg-gray-800"], div[class*="bg-zinc-800"],
+  div[class*="bg-neutral-700"], div[class*="bg-gray-700"], div[class*="bg-zinc-700"] {
     background-color: var(--dashboardPrimary) !important;
   }
   .text-gray-200, .text-gray-300, .text-neutral-200, .text-neutral-300 {
@@ -335,6 +338,20 @@
   }
   .border-gray-700, .border-neutral-700, .border-gray-800, .border-neutral-800, .border-zinc-700, .border-zinc-800 {
     border-color: var(--dashboardSecondary) !important;
+  }
+
+  /* Specific Grey Fixes (Startup, Server List, etc) */
+  div[class*="StartupContainer"] div[class*="rounded"],
+  div[class*="StartupContainer"] div[class*="bg-neutral"],
+  div[class*="ServerRow"] > div {
+    background-color: var(--dashboardPrimary) !important;
+    border: 1px solid var(--dashboardSecondary) !important;
+  }
+
+  /* Input fields in Startup */
+  div[class*="StartupContainer"] input,
+  div[class*="StartupContainer"] select {
+    background-color: var(--dashboardSecondary) !important;
   }
 
   /* ================================================================
