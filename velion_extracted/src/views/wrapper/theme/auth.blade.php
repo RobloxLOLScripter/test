@@ -1,17 +1,18 @@
-{{-- Velion - Auth page theming (Nuclear Reset) --}}
+{{-- Velion - Auth page theming (Nuclear Reset v2) --}}
 <style id="velion-auth-theme">
   /* 1. Reset Pterodactyl Layout */
   @if(!Auth::check())
     #app {
       background-color: var(--authBackground) !important;
       display: flex !important;
+      flex-direction: column !important; /* Stack vertically to prevent side-by-side squashing */
       align-items: center !important;
       justify-content: center !important;
       min-height: 100vh !important;
       width: 100vw !important;
       margin: 0 !important;
       padding: 20px !important;
-      overflow: hidden !important;
+      overflow-x: hidden !important;
     }
 
     /* Kill all Pterodactyl wrapper divs that might have styles */
@@ -24,21 +25,47 @@
       box-shadow: none !important;
     }
 
+    /* Hide the default "Login to Continue" text */
+    #app h2, #app h1:not(.velion-brand) {
+      display: none !important;
+    }
+
     /* 2. Style the actual LoginFormContainer */
     div[class*="LoginFormContainer"],
     div[class*="LoginContainer"],
     form[class*="LoginContainer"] {
-      display: block !important;
+      display: flex !important;
+      flex-direction: column !important;
       background-color: var(--authPrimary) !important;
       border: 1px solid var(--authSecondary) !important;
       border-radius: 16px !important;
       padding: 40px !important;
       box-shadow: 0 24px 64px rgba(0,0,0,0.8), var(--orangeGlow) !important;
-      width: 100% !important;
-      max-width: 400px !important;
-      margin: auto !important;
+      width: 400px !important; /* Fixed width */
+      max-width: 90vw !important;
+      min-width: 320px !important; /* Prevent squashing */
+      margin: 0 auto !important;
       z-index: 100 !important;
       box-sizing: border-box !important;
+      flex-shrink: 0 !important;
+    }
+
+    /* Add VELION Brand */
+    div[class*="LoginFormContainer"]::before,
+    div[class*="LoginContainer"]::before,
+    form[class*="LoginContainer"]::before {
+      content: "VELION";
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      background: var(--orangeGradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+      filter: drop-shadow(0 0 10px rgba(255, 122, 0, 0.3));
     }
 
     /* 3. Handle Header/Mascot */
@@ -50,18 +77,10 @@
       margin-bottom: 24px !important;
     }
 
-    h2, h1, [class*="header"] {
-      color: white !important;
-      font-size: 24px !important;
-      font-weight: 700 !important;
-      text-align: center !important;
-      margin: 10px 0 !important;
-    }
-
     img[class*="Mascot"] {
-      max-height: 100px !important;
+      max-height: 80px !important;
       width: auto !important;
-      margin-bottom: 10px !important;
+      margin-bottom: 0 !important;
     }
 
     /* 4. Fix Inputs & Labels */
@@ -69,11 +88,12 @@
     form[class*="LoginContainer"] label {
       display: block !important;
       color: #888 !important;
-      font-size: 12px !important;
-      font-weight: 600 !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
       text-transform: uppercase !important;
       margin-bottom: 8px !important;
       margin-top: 16px !important;
+      letter-spacing: 0.5px;
     }
 
     div[class*="LoginFormContainer"] input,
@@ -82,16 +102,18 @@
       border: 1px solid var(--authTertiary) !important;
       border-radius: 8px !important;
       color: white !important;
-      padding: 12px 16px !important;
+      padding: 14px 16px !important;
       width: 100% !important;
       box-sizing: border-box !important;
-      transition: border-color 0.2s;
+      transition: all 0.2s;
     }
 
     div[class*="LoginFormContainer"] input:focus,
     form[class*="LoginContainer"] input:focus {
       border-color: var(--authAccent) !important;
+      background-color: var(--authTertiary) !important;
       outline: none !important;
+      box-shadow: 0 0 0 2px rgba(255, 122, 0, 0.2) !important;
     }
 
     /* 5. Fix Button */
@@ -101,21 +123,21 @@
       border: none !important;
       border-radius: 8px !important;
       color: white !important;
-      font-weight: 700 !important;
-      padding: 14px !important;
+      font-weight: 800 !important;
+      padding: 16px !important;
       width: 100% !important;
-      margin-top: 24px !important;
+      margin-top: 30px !important;
       cursor: pointer !important;
       text-transform: uppercase !important;
-      letter-spacing: 1px !important;
-      box-shadow: 0 4px 12px rgba(255, 122, 0, 0.3) !important;
-      transition: transform 0.2s;
+      letter-spacing: 2px !important;
+      box-shadow: 0 8px 20px rgba(255, 122, 0, 0.3) !important;
+      transition: all 0.3s ease;
     }
 
     div[class*="LoginFormContainer"] button[type="submit"]:hover,
     form[class*="LoginContainer"] button[type="submit"]:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(255, 122, 0, 0.5) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(255, 122, 0, 0.5) !important;
     }
 
     /* 6. Fix Links */
@@ -124,8 +146,11 @@
       color: var(--authAccent) !important;
       text-decoration: none !important;
       font-size: 13px !important;
+      font-weight: 600 !important;
       display: inline-block !important;
-      margin-top: 12px !important;
+      margin-top: 15px !important;
+      text-align: center !important;
+      width: 100% !important;
     }
   @endif
 
@@ -149,10 +174,11 @@
     width: 100%; height: 100%;
     z-index: -1;
     @if($n_auth_background_appearance == "1")
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.7);
     @elseif($n_auth_background_appearance == "2")
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background-color: rgba(0,0,0,0.4);
     @endif
   }
 

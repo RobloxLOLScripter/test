@@ -127,12 +127,14 @@
     border: 1px solid var(--dashboardSecondary) !important;
     border-radius: var(--borderRadius) !important;
     color: var(--dashboardText) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
   }
 
   /* Card headers */
   div[class*="TitledGreyBox"] > div:first-child,
   div[class*="light:border-t"] {
     border-color: var(--dashboardSecondary) !important;
+    background-color: rgba(255,255,255,0.02) !important;
   }
 
   /* ================================================================
@@ -148,15 +150,16 @@
     background-color: var(--dashboardPrimary) !important;
     border-radius: var(--borderRadius) !important;
     border: 1px solid var(--dashboardSecondary) !important;
-    transition: all 0.2s ease !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
     margin-bottom: 10px !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
   }
   a[class*="ServerRow"]:hover > div,
   div[class*="server-card"]:hover {
     border-color: var(--dashboardAccent) !important;
-    box-shadow: var(--orangeGlow) !important;
-    transform: translateY(-2px) !important;
+    box-shadow: var(--orangeGlow), 0 8px 24px rgba(0,0,0,0.4) !important;
+    transform: translateY(-3px) !important;
+    background-color: var(--dashboardSecondary) !important;
   }
   a[class*="ServerRow"]:focus > div,
   a[class*="ServerRow"]:focus-within > div {
@@ -177,7 +180,7 @@
      ================================================================ */
   @if($n_statusgradient_style == "default")
   a[class*="ServerRow"] > div {
-    border-left: 3px solid transparent !important;
+    border-left: 4px solid transparent !important;
   }
   @endif
 
@@ -188,8 +191,9 @@
   button[class*="Button"],
   a[class*="Button"] {
     border-radius: var(--borderRadius) !important;
-    font-weight: 500 !important;
-    transition: all 0.15s ease !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease !important;
+    letter-spacing: 0.3px !important;
   }
 
   /* Primary/green button styling */
@@ -203,6 +207,8 @@
     border: none !important;
     color: white !important;
     box-shadow: 0 4px 14px rgba(255, 122, 0, 0.3) !important;
+    text-transform: uppercase !important;
+    font-size: 13px !important;
   }
   button[class*="green"]:hover,
   button.bg-green-500:hover,
@@ -210,9 +216,10 @@
   button[class*="primary"]:hover,
   button.bg-blue-600:hover,
   button.bg-primary-600:hover {
-    box-shadow: 0 6px 20px rgba(255, 122, 0, 0.5) !important;
-    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(255, 122, 0, 0.5) !important;
+    transform: translateY(-2px);
     opacity: 1 !important;
+    filter: brightness(1.1);
   }
 
   /* ================================================================
@@ -231,12 +238,14 @@
     border-radius: var(--borderRadius) !important;
     color: var(--dashboardText) !important;
     font-family: var(--font) !important;
-    transition: border-color 0.2s ease;
+    transition: all 0.2s ease;
+    padding: 10px 14px !important;
   }
   input:focus, textarea:focus, select:focus {
     border-color: var(--dashboardAccent) !important;
     outline: none !important;
     box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.15) !important;
+    background-color: var(--dashboardTertiary) !important;
   }
 
   /* ================================================================
@@ -247,14 +256,15 @@
   div[class*="console-container"],
   div.Console___StyledDiv-sc-bkudft-0 {
     border-radius: var(--borderRadius) !important;
-    background-color: #0f1419 !important;
+    background-color: #050505 !important;
     border: 1px solid var(--dashboardSecondary) !important;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5) !important;
   }
 
   /* Console command input */
   div[class*="CommandInput"],
   input[class*="command-input"] {
-    background-color: #0f1419 !important;
+    background-color: #0a0a0a !important;
     border-radius: 0 0 var(--borderRadius) var(--borderRadius) !important;
     border-top: 1px solid var(--dashboardSecondary) !important;
     color: #e2e8f0 !important;
@@ -264,8 +274,10 @@
   button[class*="PowerAction"],
   div[class*="power-buttons"] button {
     border-radius: var(--borderRadius) !important;
-    font-weight: 600 !important;
-    padding: 8px 18px !important;
+    font-weight: 700 !important;
+    padding: 10px 20px !important;
+    text-transform: uppercase !important;
+    font-size: 12px !important;
   }
 
   /* ================================================================
@@ -278,6 +290,7 @@
     background-color: var(--dashboardPrimary) !important;
     border-radius: var(--borderRadius) !important;
     border: 1px solid var(--dashboardSecondary) !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
   }
 
   /* ================================================================
@@ -285,14 +298,37 @@
      ================================================================ */
   table {
     color: var(--dashboardText) !important;
+    border-collapse: separate !important;
+    border-spacing: 0 8px !important;
   }
   tr {
-    border-color: var(--dashboardSecondary) !important;
+    background-color: var(--dashboardPrimary) !important;
+    border: none !important;
+    border-radius: var(--borderRadius) !important;
+  }
+  tr:has(td) {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2) !important;
+    transition: transform 0.2s ease;
+  }
+  tr:has(td):hover {
+    transform: scale(1.005);
+    background-color: var(--dashboardSecondary) !important;
   }
   td, th {
     color: var(--dashboardText) !important;
-    border-color: var(--dashboardSecondary) !important;
+    border: none !important;
+    padding: 16px !important;
   }
+  th {
+    background-color: transparent !important;
+    text-transform: uppercase !important;
+    font-size: 11px !important;
+    letter-spacing: 1px !important;
+    color: var(--sidebarTextSecondary) !important;
+    padding-bottom: 4px !important;
+  }
+  td:first-child { border-radius: 10px 0 0 10px !important; }
+  td:last-child { border-radius: 0 10px 10px 0 !important; }
 
   /* ================================================================
      DROPDOWNS & MODALS
@@ -302,7 +338,8 @@
     background-color: var(--dashboardPrimary) !important;
     border: 1px solid var(--dashboardSecondary) !important;
     border-radius: var(--borderRadius) !important;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.3) !important;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.6) !important;
+    padding: 6px !important;
   }
 
   div[class*="Modal"],
@@ -310,39 +347,41 @@
   div[class*="ModalContent"] {
     background-color: var(--dashboardPrimary) !important;
     border: 1px solid var(--dashboardSecondary) !important;
-    border-radius: var(--borderRadius) !important;
+    border-radius: 16px !important;
     color: var(--dashboardText) !important;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.8) !important;
   }
 
   /* Modal overlay */
   div[class*="ModalMask"],
   div[class*="modal-mask"] {
-    background-color: rgba(0, 0, 0, 0.6) !important;
-    backdrop-filter: blur(4px) !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(8px) !important;
   }
 
   /* ================================================================
-     TAILWIND OVERRIDES
+     TAILWIND OVERRIDES (Aggressive Grey Removal)
      ================================================================ */
-  .bg-neutral-900, .bg-neutral-800, .bg-neutral-700, .bg-gray-900, .bg-gray-800, .bg-zinc-900, .bg-zinc-800, .bg-slate-900, .bg-slate-800,
-  div[class*="bg-neutral-900"], div[class*="bg-gray-900"], div[class*="bg-zinc-900"] {
-    background-color: var(--dashboardBackground) !important;
-  }
-  .bg-neutral-600, .bg-gray-700, .bg-gray-600, .bg-zinc-700, .bg-slate-700,
-  div[class*="bg-neutral-800"], div[class*="bg-gray-800"], div[class*="bg-zinc-800"],
-  div[class*="bg-neutral-700"], div[class*="bg-gray-700"], div[class*="bg-zinc-700"] {
+  [class*="bg-neutral-"], [class*="bg-gray-"], [class*="bg-zinc-"], [class*="bg-slate-"] {
     background-color: var(--dashboardPrimary) !important;
   }
-  .text-gray-200, .text-gray-300, .text-neutral-200, .text-neutral-300 {
-    color: var(--dashboardText) !important;
+
+  .bg-neutral-900, .bg-gray-900, .bg-zinc-900, .bg-slate-900, .bg-black {
+    background-color: var(--dashboardBackground) !important;
   }
-  .border-gray-700, .border-neutral-700, .border-gray-800, .border-neutral-800, .border-zinc-700, .border-zinc-800 {
+
+  .bg-neutral-800, .bg-gray-800, .bg-zinc-800, .bg-slate-800 {
+    background-color: var(--dashboardPrimary) !important;
+  }
+
+  .border-neutral-700, .border-gray-700, .border-zinc-700, .border-neutral-800, .border-gray-800 {
     border-color: var(--dashboardSecondary) !important;
   }
 
   /* Specific Grey Fixes (Startup, Server List, etc) */
   div[class*="StartupContainer"] div[class*="rounded"],
   div[class*="StartupContainer"] div[class*="bg-neutral"],
+  div[class*="StartupContainer"] div[class*="bg-gray"],
   div[class*="ServerRow"] > div {
     background-color: var(--dashboardPrimary) !important;
     border: 1px solid var(--dashboardSecondary) !important;
@@ -360,21 +399,24 @@
   div[class*="FlashMessage"],
   div[class*="flash-message"] {
     border-radius: var(--borderRadius) !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
   }
 
   /* ================================================================
      SCROLLBAR STYLING
      ================================================================ */
   ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: transparent;
+    background: var(--dashboardBackground);
   }
   ::-webkit-scrollbar-thumb {
     background: var(--dashboardTertiary);
-    border-radius: 3px;
+    border-radius: 10px;
+    border: 2px solid var(--dashboardBackground);
   }
   ::-webkit-scrollbar-thumb:hover {
     background: var(--dashboardAccent);
@@ -385,10 +427,11 @@
      ================================================================ */
   @if($n_dashboard_transparency == "1")
   div[class*="TitledGreyBox"],
-  div[class*="ContentBox"] {
-    background-color: color-mix(in srgb, var(--dashboardPrimary) 85%, transparent) !important;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+  div[class*="ContentBox"],
+  div[class*="ServerRow"] > div {
+    background-color: rgba(10, 10, 10, 0.7) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
   @endif
 
@@ -415,8 +458,8 @@
     background-image: url('{{ $n_background_image }}');
     background-size: cover;
     background-position: center;
-    @if($n_background_appearance == "1") filter: brightness(0.7); @endif
-    @if($n_background_appearance == "2") filter: blur(6px); @endif
+    @if($n_background_appearance == "1") filter: brightness(0.4); @endif
+    @if($n_background_appearance == "2") filter: blur(10px) brightness(0.6); @endif
     @endif
   }
 
@@ -506,32 +549,6 @@
   div[class*="terminal"] > div::-webkit-scrollbar {
     width: 4px;
   }
-
-  /* ================================================================
-     GREY FIX - Targeted approach (not nuclear)
-     ================================================================ */
-
-  /* Cards and boxes */
-  div[class*="TitledGreyBox"],
-  div[class*="grey-box"],
-  div[class*="GreyRowBox"],
-  div[class*="ContentBox"],
-  div[class*="TitledGreyBox___StyledDiv"],
-  div[class*="GreyBox"] {
-    background-color: var(--dashboardPrimary) !important;
-    border: 1px solid var(--dashboardSecondary) !important;
-    border-radius: var(--borderRadius) !important;
-  }
-
-  /* Tailwind background classes */
-  .bg-neutral-800, .bg-neutral-900, .bg-neutral-700,
-  .bg-gray-700, .bg-gray-800, .bg-gray-900,
-  .bg-zinc-800, .bg-zinc-900, .bg-slate-800, .bg-slate-900,
-  .bg-neutral-600, .bg-gray-600 {
-    background-color: var(--dashboardBackground) !important;
-  }
-
-  /* Grey backgrounds from styled-components are fixed via JS in script.blade.php */
 
   /* ================================================================
      GRAPH CONTAINERS - force dark
@@ -675,7 +692,7 @@
 
   /* Selection highlight */
   ::selection {
-    background-color: rgba(255, 122, 0, 0.3);
+    background-color: rgba(255, 122, 0, 0.4);
     color: #fff;
   }
 
@@ -755,7 +772,7 @@
     left: 0 !important;
     overflow: visible !important;
     color: var(--sidebarTextSecondary) !important;
-    transition: background-color 0.15s, color 0.15s !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
   .sidebarButton:hover {
     background-color: var(--sidebarSecondary) !important;
@@ -766,9 +783,9 @@
     padding-bottom: 10px !important;
     box-shadow: inset 0 0 10px rgba(255, 122, 0, 0.05);
   }
-  .sidebarButton:hover .sidebarIcon,
-  .sidebarButton:hover .wideSidebarSpan {
-    color: var(--sidebarText) !important;
+  .sidebarButton:hover .sidebarIcon {
+    transform: scale(1.1) !important;
+    color: var(--dashboardAccent) !important;
   }
 
   .sidebarButtonSelected,
@@ -777,7 +794,7 @@
     color: #fff !important;
     border: none !important;
     border-left: none !important;
-    box-shadow: 0 2px 12px rgba(255, 122, 0, 0.3) !important;
+    box-shadow: 0 4px 14px rgba(255, 122, 0, 0.4) !important;
   }
   .sidebarButtonSelected .sidebarIcon,
   .sidebarButton.active .sidebarIcon,
@@ -796,12 +813,12 @@
     margin: 0 !important;
     padding: 0 !important;
     line-height: 1 !important;
-    transition: color 0.15s !important;
+    transition: all 0.2s ease !important;
   }
 
   .wideSidebarSpan {
     font-size: 14px !important;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
     font-family: var(--font) !important;
     color: var(--sidebarTextSecondary) !important;
     display: inline !important;
@@ -815,10 +832,11 @@
   .sidebarSpacer {
     height: 1px !important;
     background-color: var(--sidebarSecondary) !important;
-    margin: 8px 14px !important;
+    margin: 12px 14px !important;
     padding: 0 !important;
     width: auto !important;
     border: none !important;
+    opacity: 0.5;
   }
 
   body, body.bg-neutral-800 {
@@ -974,27 +992,27 @@
     display: flex !important;
     align-items: center !important;
     gap: 12px !important;
-    padding: 20px 18px 16px 18px !important;
-    margin-bottom: 4px !important;
+    padding: 24px 18px 20px 18px !important;
+    margin-bottom: 8px !important;
   }
   .velion-brand-icon {
-    font-size: 28px !important;
+    font-size: 32px !important;
     color: var(--sidebarAccent) !important;
     width: auto !important;
     text-align: center !important;
-    filter: drop-shadow(0 0 8px rgba(255, 122, 0, 0.6)) !important;
+    filter: drop-shadow(0 0 12px rgba(255, 122, 0, 0.8)) !important;
   }
   .velion-brand-text {
-    font-size: 20px !important;
-    font-weight: 800 !important;
+    font-size: 22px !important;
+    font-weight: 900 !important;
     color: var(--sidebarText) !important;
     font-family: var(--font) !important;
-    letter-spacing: -0.5px !important;
+    letter-spacing: 1px !important;
     background: var(--orangeGradient) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
     background-clip: text !important;
-    text-shadow: 0 0 10px rgba(255, 122, 0, 0.2);
+    text-shadow: 0 0 15px rgba(255, 122, 0, 0.3);
   }
   .velion-brand .customlogo {
     max-height: 32px !important;
