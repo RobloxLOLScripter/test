@@ -1,5 +1,4 @@
-{{-- Velion - CSS variables (Authenticated only) --}}
-@if(Auth::check())
+{{-- Velion - CSS variables --}}
 <style id="velion-variables">
   :root {
     /* Core Velion Colors - Updated to #ff8c00 */
@@ -55,4 +54,3 @@
     --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   }
 </style>
-@endif

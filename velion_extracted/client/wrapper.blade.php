@@ -696,9 +696,10 @@
 @if(Auth::check())
   @include('blueprint.extensions.velion.wrapper.script')
   @include('blueprint.extensions.velion.wrapper.animations')
-  @include('blueprint.extensions.velion.wrapper.theme.auth')
   @include('blueprint.extensions.velion.wrapper.theme.panel')
   @include('blueprint.extensions.velion.wrapper.file-switch')
+@else
+  @include('blueprint.extensions.velion.wrapper.theme.auth')
 @endif
 @include('blueprint.extensions.velion.wrapper.initialize.index')
 @if(Auth::check())
