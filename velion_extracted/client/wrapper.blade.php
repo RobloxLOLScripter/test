@@ -96,42 +96,9 @@
   $n_animations = $blueprint->dbGet("velion", "animations");
   $n_sidebar_separators = $blueprint->dbGet("velion", "sidebar_separators");
 
-  // Velion: Force wide sidebar mode (always show text labels like Hexado)
+  // Velion: Force wide sidebar mode
   $n_sidebar_full = "1";
   $n_sidebar_buttonstyle = "1";
-
-  // Velion: Force orange color scheme (override any old DB values)
-  if($n_palette_dashboard_2 == "#3b82f6" || $n_palette_dashboard_2 == "#22d3a7") {
-    $n_palette_dashboard_1 = "#f1f5f9";
-    $n_palette_dashboard_2 = "#f97316";
-    $n_palette_dashboard_3 = "#1a1d24";
-    $n_palette_dashboard_4 = "#22262e";
-    $n_palette_dashboard_5 = "#2a2f38";
-    $n_palette_dashboard_6 = "#333842";
-    $n_palette_dashboard_7 = "#111318";
-    $n_palette_dashboard_8 = "#3b404b";
-    $n_palette_dashboard_9 = "#ea580c";
-  }
-  if($n_palette_sidebar_6 == "#3b82f6" || $n_palette_sidebar_6 == "#22d3a7") {
-    $n_palette_sidebar_1 = "#f1f5f9";
-    $n_palette_sidebar_2 = "#94a3b8";
-    $n_palette_sidebar_3 = "#16181e";
-    $n_palette_sidebar_4 = "#1e2028";
-    $n_palette_sidebar_5 = "#262930";
-    $n_palette_sidebar_6 = "#f97316";
-    $n_palette_sidebar_7 = "#111318";
-    $n_palette_sidebar_8 = "#f97316";
-  }
-  if($n_palette_auth_6 == "#3b82f6" || $n_palette_auth_6 == "#1a9a7a") {
-    $n_palette_auth_1 = "#111318";
-    $n_palette_auth_2 = "#1a1d24";
-    $n_palette_auth_3 = "#22262e";
-    $n_palette_auth_4 = "#333842";
-    $n_palette_auth_5 = "#ef4444";
-    $n_palette_auth_6 = "#f97316";
-    $n_palette_auth_7 = "#3b404b";
-    $n_palette_auth_8 = "#f1f5f9";
-  }
 ?>
 @include('blueprint.extensions.velion.wrapper.import')
 
@@ -158,10 +125,7 @@
   <?php
     $__WIDE_TOPMARGIN = "unset";
     if($n_icon_fallback == "bootstrap") {
-
-      // BOOTSTRAP
       $__SCALE = "30px";
-      $__WIDE_TOPMARGIN = "unset";
       $__home             = "bi bi-exclude";
       $__admin            = "bi bi-gear-wide-connected";
       $__account          = "bi bi-person-fill-gear";
@@ -182,10 +146,7 @@
       $__account_ssh      = "bi bi-key";
       $__account_activity = "bi bi-clipboard-pulse";
       $__account_more     = "bi bi-three-dots";
-
     } elseif($n_icon_fallback == "feather") {
-
-      // FEATHER
       $__SCALE = "32px";
       $__WIDE_TOPMARGIN = "-2px";
       $__home             = "ff ff-home";
@@ -208,10 +169,7 @@
       $__account_ssh      = "ff ff-key";
       $__account_activity = "ff ff-activity";
       $__account_more     = "ff ff-more-vertical";
-
     } elseif($n_icon_fallback == "lucide") {
-
-      // LUCIDE
       $__SCALE = "32px";
       $__home             = "icon-layers";
       $__admin            = "icon-sliders-horizontal";
@@ -233,10 +191,7 @@
       $__account_ssh      = "icon-key";
       $__account_activity = "icon-scroll-text";
       $__account_more     = "icon-more-vertical";
-
     } elseif($n_icon_fallback == "material") {
-
-      // MATERIAL
       $__SCALE = "37px";
       $__home             = "mdi mdi-home";
       $__admin            = "mdi mdi-hammer-wrench";
@@ -258,10 +213,7 @@
       $__account_ssh      = "mdi mdi-key-chain";
       $__account_activity = "mdi mdi-clipboard-pulse";
       $__account_more     = "mdi mdi-dots-horizontal";
-
     } elseif($n_icon_fallback == "material-light") {
-
-      // MATERIAL-LIGHT
       $__SCALE = "37px";
       $__home             = "mdil mdil-home";
       $__admin            = "mdil mdil-view-dashboard";
@@ -283,10 +235,7 @@
       $__account_ssh      = "mdil mdil-lock";
       $__account_activity = "mdil mdil-clipboard-text";
       $__account_more     = "mdil mdil-dots-horizontal";
-
     } elseif($n_icon_fallback == "fontawesome") {
-
-      // FONTAWESOME
       $__SCALE = "28px";
       $__home             = "fa-solid fa-house";
       $__admin            = "fa-solid fa-sliders";
@@ -308,10 +257,7 @@
       $__account_ssh      = "fa-solid fa-key";
       $__account_activity = "fa-solid fa-scroll";
       $__account_more     = "fa-solid fa-ellipsis-vertical";
-
     } elseif($n_icon_fallback == "eva-outline") {
-
-      // EVA OUTLINE
       $__SCALE = "34px";
       $__home             = "eva eva-home-outline";
       $__admin            = "eva eva-options-outline";
@@ -333,10 +279,7 @@
       $__account_ssh      = "eva eva-lock-outline";
       $__account_activity = "eva eva-activity-outline";
       $__account_more     = "eva eva-more-horizontal-outline";
-
     } elseif($n_icon_fallback == "eva-solid") {
-
-      // EVA SOLID
       $__SCALE = "34px";
       $__home             = "eva eva-home";
       $__admin            = "eva eva-options";
@@ -358,10 +301,7 @@
       $__account_ssh      = "eva eva-lock";
       $__account_activity = "eva eva-activity";
       $__account_more     = "eva eva-more-horizontal";
-
     } elseif($n_icon_fallback == "remix-outline") {
-
-      // REMIX OUTLINE
       $__SCALE = "33px";
       $__home             = "ri-home-line";
       $__admin            = "ri-equalizer-3-line";
@@ -383,10 +323,7 @@
       $__account_ssh      = "ri-key-2-line";
       $__account_activity = "ri-pulse-line";
       $__account_more     = "ri-more-2-line";
-
     } elseif($n_icon_fallback == "remix-solid") {
-
-      // REMIX SOLID
       $__SCALE = "33px";
       $__home             = "ri-home-fill";
       $__admin            = "ri-equalizer-3-fill";
@@ -408,10 +345,7 @@
       $__account_ssh      = "ri-key-2-fill";
       $__account_activity = "ri-pulse-fill";
       $__account_more     = "ri-more-2-fill";
-
     } elseif($n_icon_fallback == "tabler") {
-
-      // TABLER ICONS
       $__SCALE = "36px";
       $__home             = "ti ti-home";
       $__admin            = "ti ti-server-cog";
@@ -433,10 +367,7 @@
       $__account_ssh      = "ti ti-key";
       $__account_activity = "ti ti-activity-heartbeat";
       $__account_more     = "ti ti-dots";
-
     } elseif($n_icon_fallback == "octicons") {
-
-      // OCTICONS
       $__SCALE = "33px";
       $__home             = "octicon octicon-home-fill-24";
       $__admin            = "octicon octicon-tools-24";
@@ -458,10 +389,7 @@
       $__account_ssh      = "octicon octicon-key-24";
       $__account_activity = "octicon octicon-log-24";
       $__account_more     = "octicon octicon-kebab-horizontal-24";
-
     } elseif($n_icon_fallback == "akar-icons") {
-
-      // AKAR ICONS
       $__SCALE = "33px";
       $__home             = "ai-home";
       $__admin            = "ai-settings-vertical";
@@ -483,10 +411,7 @@
       $__account_ssh      = "ai-key";
       $__account_activity = "ai-clipboard";
       $__account_more     = "ai-more-vertical-fill";
-
     } elseif($n_icon_fallback == "hugeicons-solid") {
-
-      // HUGEICONS SOLID
       $__SCALE = "33px";
       $__home             = "hgi-solid hgi-home-01";
       $__admin            = "hgi-solid hgi-settings-02";
@@ -508,10 +433,7 @@
       $__account_ssh      = "hgi-solid hgi-biometric-access";
       $__account_activity = "hgi-solid hgi-book-02";
       $__account_more     = "hgi-solid hgi-more-vertical";
-
     } elseif($n_icon_fallback == "hugeicons-stroke") {
-
-      // HUGEICONS STROKE
       $__SCALE = "33px";
       $__home             = "hgi-stroke hgi-home-01";
       $__admin            = "hgi-stroke hgi-settings-02";
@@ -533,38 +455,7 @@
       $__account_ssh      = "hgi-stroke hgi-biometric-access";
       $__account_activity = "hgi-stroke hgi-book-02";
       $__account_more     = "hgi-stroke hgi-more-vertical";
-
     }
-
-
-    /*
-    elseif($n_icon_fallback == "pack-id") {
-
-      // PACK NAME
-      $__SCALE = "33px";
-      $__home             = "";
-      $__admin            = "";
-      $__account          = "";
-      $__logout           = "";
-      $__server_terminal  = "";
-      $__server_files     = "";
-      $__server_databases = "";
-      $__server_schedules = "";
-      $__server_users     = "";
-      $__server_backups   = "";
-      $__server_network   = "";
-      $__server_startup   = "";
-      $__server_settings  = "";
-      $__server_activity  = "";
-      $__server_more      = "";
-      $__account_account  = "";
-      $__account_api      = "";
-      $__account_ssh      = "";
-      $__account_activity = "";
-      $__account_more     = "";
-
-    }
-    */
   ?>
   @include('blueprint.extensions.velion.wrapper.sidebar.content')
 </div>
@@ -604,9 +495,7 @@
   /* Sidebar */
   @if($n_sidebar_background == "default")
   .sidebar {
-    transition:
-      left 0.5s,
-      width 1s !important;
+    transition: left 0.5s, width 1s !important;
     position: fixed;
     left: 0; top: 0px;
     width: 75px; height: 100%;
@@ -616,9 +505,7 @@
   }
   @elseif($n_sidebar_background == "blurred")
   .sidebar {
-    transition:
-      left 0.5s,
-      width 1s !important;
+    transition: left 0.5s, width 1s !important;
     position: fixed;
     left: 0; top: 0px;
     width: 75px; height: 100%;
@@ -642,38 +529,12 @@
     padding-top: 10px;
     overflow-y: scroll;
     overflow-x: visible;
-
     scrollbar-width: none;
     -ms-overflow-style: none;
     &::-webkit-scrollbar {
       display: none;
     }
   }
-
-  /* Sidebar preloader */
-  @keyframes sidebar-preloader {
-    0%   { background-color: var(--sidebarSecondary) }
-    20%  { background-color: color-mix(in hsl, var(--sidebarSecondary) 87%, white) }
-    40%  { background-color: var(--sidebarSecondary) }
-    100% { background-color: var(--sidebarSecondary) }
-  }
-  .sidebar-placeholder-animated {
-    animation: sidebar-preloader 1s linear infinite;
-    color: transparent;
-    background-color: var(--sidebarSecondary);
-  }
-
-  .sidebar-placeholder-animated:nth-child(0) { animation-delay: 0s }
-  .sidebar-placeholder-animated:nth-child(1) { animation-delay: .05s }
-  .sidebar-placeholder-animated:nth-child(2) { animation-delay: .1s }
-  .sidebar-placeholder-animated:nth-child(3) { animation-delay: .15s }
-  .sidebar-placeholder-animated:nth-child(4) { animation-delay: .2s }
-  .sidebar-placeholder-animated:nth-child(5) { animation-delay: .25s }
-  .sidebar-placeholder-animated:nth-child(6) { animation-delay: .3s }
-  .sidebar-placeholder-animated:nth-child(7) { animation-delay: .35s }
-  .sidebar-placeholder-animated:nth-child(8) { animation-delay: .4s }
-  .sidebar-placeholder-animated:nth-child(9) { animation-delay: .45s }
-  .sidebar-placeholder-animated:nth-child(10) { animation-delay: .5s }
 
   /* Sidebar items */
   .sidebarButton {
@@ -691,28 +552,13 @@
     overflow-y: hidden;
     position: relative;
     left: 0px;
-    transition:
-      background-color 0.3s,
-      border .2s,
-      border-left .2s,
-      margin-left .3s,
-      left .3s,
-      padding-top .3s,
-      padding-bottom .3s,
-      height .3s !important;
+    transition: background-color 0.3s, border .2s, border-left .2s, margin-left .3s, left .3s, padding-top .3s, padding-bottom .3s, height .3s !important;
   }
   .sidebarButton:hover {
     @if($n_sidebar_background == "default")
       background-color: var(--sidebarSecondaryHover);
     @elseif($n_sidebar_background == "blurred")
       background-color: #ffffff20;
-    @endif
-  }
-  .sidebarButton:active {
-    @if($n_sidebar_background == "default")
-      background-color: var(--sidebarSecondaryActive);
-    @elseif($n_sidebar_background == "blurred")
-      background-color: #ffffff15;
     @endif
   }
 
@@ -727,23 +573,10 @@
 
   .sidebarIcon {
     color: var(--sidebarPrimary);
-    transition:
-      color 0.3s,
-      opacity 0.3s !important;
-
+    transition: color 0.3s, opacity 0.3s !important;
     @if(Auth::check())
       font-size: calc({{ $__SCALE }} * {{ $n_icon_scale }});
     @endif
-  }
-  .sidebarIcon:hover {
-    color: var(--sidebarPrimaryHover);
-  }
-
-  .customicon {
-    width: 100%;
-    height: 100%;
-    scale: calc({{ $n_icon_scale }});
-    @if($n_icon_scale == "1.00")border-radius: var(--borderRadiusSidebar);@endif
   }
 
   @if($n_sidebar_separators == "1")
@@ -755,10 +588,6 @@
       border-top: 1px solid var(--sidebarSecondary);
     }
   @endif
-
-  .sidebarCategory {
-    display: none;
-  }
 
   @if(Auth::check())
     @if($n_background_image == "")
@@ -778,7 +607,7 @@
           height: 100%;
           z-index: -1;
         }
-        body, body.bg-neutral-800, #app, .App___StyledDiv-sc-2l91w7-0 {
+        body, body.bg-neutral-800, #app {
           background: unset !important;
         }
         body, body.bg-neutral-800 {
@@ -793,20 +622,17 @@
         background-color: #00000000;
       }
     @endif
-  @else
-    body, bg-neutral-800 {
-      color: #fff;
-      background-color: var(--pageBackground);
-    }
   @endif
 
   html:not([multitasking]) {
+    @if(Auth::check())
     background-color: var(--pageBackground) !important;
     background: var(--pageBackground) !important;
     z-index: -2 !important;
+    @endif
   }
 
-  @if($n_background_image != "")
+  @if($n_background_image != "" && Auth::check())
     .fixed-background {
       background: url("{{ $n_background_image }}") no-repeat;
       @if($n_background_appearance == "1")filter: blur(40px);scale: 1.1;@endif
@@ -826,10 +652,6 @@
   @endif
 
   @if($n_sidebar_full == "1" && Auth::check())
-    /*
-      wide sidebar
-    */
-
     .sidebarIcon {
       float: left;
       margin-left: 15px;
@@ -839,32 +661,15 @@
       font-size: calc({{ $__SCALE }} * 0.8);
       width: calc({{ $__SCALE }} * 0.8 + 15px);
     }
-    .velion-mobile-nav { display: none; }
     .sidebar {
       width: 200px;
       display: block;
     }
-    div.ProgressBar___StyledDiv-sc-14ayc3f-1.jleFWY {
-      left: 195px !important;
-      width: calc(100% - 195px) !important;
-    }
     .sidebarContentContainer {
       width: 100%;
     }
-
-    .customicon {
-      height: 100%;
-      aspect-ratio: 1/1;
-      float: left;
-      width: auto;
-    }
     body, body.bg-neutral-800 {
       padding-left: 200px;
-    }
-    .sidebarSpacer {
-      width: calc(100% - 31px);
-      margin-left: 5px;
-      margin-right: 5px;
     }
     .wideSidebarSpan {
       text-align: left;
@@ -874,115 +679,29 @@
       font-weight: 500;
       height: 100%;
       line-height: 55px;
-      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     }
     .sidebarButton {
       width: calc(100% - 10px - 10px);
-      transition:
-        border .2s,
-        border-left .2s;
     }
-    @if($n_sidebar_customlogo != "")
-      /* custom logo */
-      .customlogo {
-        height: 62px;
-        width: auto;
-        margin-right: auto;
-        border-radius: var(--borderRadiusSidebar);
-        margin-bottom: 10px;
-      }
-    @endif
     @if($n_sidebar_buttonstyle == "1")
-      .sidebarButton {
-        border-left: 0px solid transparent;
-      }
       .sidebarButtonSelected {
-        @if($n_sidebar_background == "default")
-          background-color: var(--sidebarSecondary);
-        @endif
         border-left: 10px solid var(--sidebarButtonActive) !important;
-        transition: border .2s, border-left .2s;
-      }
-    @elseif($n_sidebar_buttonstyle == "2")
-      .sidebarIcon {
-        line-height: 49px !important;
-        margin-left: 12px !important;
-      }
-      .wideSidebarSpan {
-        line-height: 49px !important;
-      }
-      .sidebarButton {
-        --border: 3px solid transparent;
-        border: 3px solid transparent !important;
-        border-left: 3px solid transparent !important;
-      }
-      .sidebarButtonSelected {
-        @if($n_sidebar_background == "default")
-          background-color: var(--sidebarSecondary);
-        @endif
-        --border: 3px solid var(--sidebarButtonActive);
-        border-left: 3px solid var(--sidebarButtonActive) !important;
-        border: 3px solid var(--sidebarButtonActive) !important;
         transition: border .2s, border-left .2s;
       }
     @endif
   @endif
-
-  @media screen and (min-width: 760px) {
-    /* Sidebar hover animations */
-    @if($n_sidebar_hover == "popout")
-      .sidebarButton:hover {
-        position: relative;
-        left: 7px;
-      }
-    @elseif($n_sidebar_hover == "expand")
-      .sidebarButton:hover {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        height: calc(75px - 10px - 10px + 20px);
-      }
-    @endif
-  }
 </style>
 @include('blueprint.extensions.velion.wrapper.sidebar.mobile')
 @include('blueprint.extensions.velion.wrapper.theme.variables')
 @if(Auth::check())
   @include('blueprint.extensions.velion.wrapper.script')
   @include('blueprint.extensions.velion.wrapper.animations')
-@endif
-@include('blueprint.extensions.velion.wrapper.theme.auth')
-@include('blueprint.extensions.velion.wrapper.theme.panel')
+  @include('blueprint.extensions.velion.wrapper.theme.auth')
+  @include('blueprint.extensions.velion.wrapper.theme.panel')
+  @include('blueprint.extensions.velion.wrapper.file-switch')
 @endif
 @include('blueprint.extensions.velion.wrapper.initialize.index')
-@if($n_init == "{version}")
-@if(Auth::check() != true)
-  <div
-    <?php
-      if($n_auth_background_magic != "") {
-        echo('class="velion-auth-wallpaper magic-pattern['.$n_auth_background_magic.']" view="auth"');
-      } else {
-        echo('class="velion-auth-wallpaper"');
-      }
-    ?>
-  ></div>
-  <div class="velion-auth-backdrop"></div>
-  @if($n_watermark_auth != "0")
-    <div class="velion-watermark">Poháněno <a href="#"><b class="watermark-highlight"><i class="bi bi-exclude"></i> Velion</b></a></div>
-  @endif
-  <style>.g-recaptcha {display: none !important;}</style>
-  @if($blueprint->dbGet("settings", "recaptcha:enabled") == "true")
-    <div class="notification">
-      <div class="notificationBar"></div>
-      <div class="notificationIcon"></div>
-      <div class="notificationTextContainer">
-        <p class="notificationText"><b style="font-size: 14px;">Chráněno službou reCAPTCHA</b><br>
-        <span style="font-size: 12px;"><a href="https://www.google.com/intl/en/policies/privacy/" style="color: #4D4DFF;">Privacy</a>, <a href="https://www.google.com/intl/en/policies/terms/" style="color: #4D4DFF;">Terms</a></span></p>
-      </div>
-    </div>
-  @endif
-@endif
 @if(Auth::check())
-  @include('blueprint.extensions.velion.wrapper.file-switch')
 @if($n_keyboard_shortcuts == "1")
   @include('blueprint.extensions.velion.wrapper.keybinds.index')
 @endif

@@ -1,4 +1,5 @@
-{{-- Velion - CSS custom properties (Modern Minimal Update) --}}
+{{-- Velion - CSS variables (Authenticated only) --}}
+@if(Auth::check())
 <style id="velion-variables">
   :root {
     /* Core Velion Colors - Updated to #ff8c00 */
@@ -40,16 +41,6 @@
     --sidebarSecondaryActive: var(--surfaceBlack);
     --sidebarButtonActive: var(--accentOrange);
 
-    /* Auth */
-    --authBackground: #050505;
-    --authPrimary: #0a0a0a;
-    --authSecondary: #111111;
-    --authTertiary: #1a1a1a;
-    --authError: #ef4444;
-    --authAccent: #ff8c00;
-    --authQuaternary: #222222;
-    --authText: #e2e8f0;
-
     /* Status */
     --statusOffline: {{ $n_palette_status_offline }};
     --statusError: {{ $n_palette_status_error }};
@@ -64,3 +55,4 @@
     --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   }
 </style>
+@endif
