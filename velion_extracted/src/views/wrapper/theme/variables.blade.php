@@ -1,17 +1,17 @@
-{{-- Velion - CSS custom properties (Hexado-style) --}}
+{{-- Velion - CSS custom properties (Modern Minimal Update) --}}
 <style id="velion-variables">
   :root {
-    /* Core Velion Colors */
+    /* Core Velion Colors - Updated to #ff8c00 */
     --trueBlack: #050505;
     --deepBlack: #0a0a0a;
     --surfaceBlack: #111111;
-    --accentOrange: #ff7a00;
-    --accentOrangeLight: #ffb347;
-    --orangeGradient: linear-gradient(135deg, #ff7a00, #ffb347);
-    --orangeGlow: 0 0 15px rgba(255, 122, 0, 0.3);
+    --accentOrange: #ff8c00;
+    --accentOrangeLight: #ffa500;
+    --orangeGradient: linear-gradient(135deg, #ff8c00, #ffa500);
+    --orangeGlow: 0 0 12px rgba(255, 140, 0, 0.2);
 
     /* Dashboard */
-    --dashboardText: {{ $n_palette_dashboard_1 }};
+    --dashboardText: #e2e8f0;
     --dashboardAccent: var(--accentOrange);
     --dashboardAccentGradient: var(--orangeGradient);
     --dashboardPrimary: var(--deepBlack);
@@ -24,8 +24,8 @@
     --pageBackground: var(--trueBlack);
 
     /* Sidebar */
-    --sidebarText: {{ $n_palette_sidebar_1 }};
-    --sidebarTextSecondary: {{ $n_palette_sidebar_2 }};
+    --sidebarText: #ffffff;
+    --sidebarTextSecondary: #94a3b8;
     --sidebarBackground: var(--trueBlack);
     --sidebarSecondary: var(--deepBlack);
     --sidebarTertiary: var(--surfaceBlack);
@@ -34,21 +34,21 @@
     --sidebarHighlight: var(--accentOrange);
 
     /* Sidebar derived */
-    --sidebarPrimary: {{ $n_palette_sidebar_1 }};
+    --sidebarPrimary: #ffffff;
     --sidebarPrimaryHover: var(--accentOrange);
     --sidebarSecondaryHover: var(--deepBlack);
     --sidebarSecondaryActive: var(--surfaceBlack);
     --sidebarButtonActive: var(--accentOrange);
 
     /* Auth */
-    --authBackground: var(--trueBlack);
-    --authPrimary: var(--deepBlack);
-    --authSecondary: var(--surfaceBlack);
+    --authBackground: #050505;
+    --authPrimary: #0a0a0a;
+    --authSecondary: #111111;
     --authTertiary: #1a1a1a;
-    --authError: {{ $n_palette_auth_5 }};
-    --authAccent: var(--accentOrange);
+    --authError: #ef4444;
+    --authAccent: #ff8c00;
     --authQuaternary: #222222;
-    --authText: {{ $n_palette_auth_8 }};
+    --authText: #e2e8f0;
 
     /* Status */
     --statusOffline: {{ $n_palette_status_offline }};
@@ -57,7 +57,7 @@
     --statusOnline: {{ $n_palette_status_online }};
 
     /* Shape */
-    --borderRadius: {{ $n_border_radius }}px;
+    --borderRadius: 12px;
     --borderRadiusSidebar: {{ $n_sidebar_border_radius }}px;
 
     /* Typography */
