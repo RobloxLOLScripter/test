@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "stretchres",
+  "version": "${version}",
+  "name": "StretchRes",
+  "description": "Adjust your game stretch factor with 'O'",
+  "authors": [
+    "trixx1_"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/stretchres/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.trixx1.stretchres.StretchRes"
+    ],
+    "client": [
+      "com.trixx1.stretchres.client.StretchResClient"
+    ]
+  },
+  "mixins": [
+    "stretchres.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.5",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
