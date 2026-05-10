@@ -10,6 +10,7 @@ public class StretchRes implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        StretchConfig.init();
         LOGGER.info("StretchRes initialized!");
     }
 }

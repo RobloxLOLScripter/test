@@ -24,9 +24,9 @@ public abstract class GameRendererMixin {
 
     @Inject(method = "getBasicProjectionMatrix", at = @At("RETURN"), cancellable = true)
     private void onGetBasicProjectionMatrix(double fov, CallbackInfoReturnable<Matrix4f> cir) {
-        if (StretchConfig.stretchFactor != 1.0) {
+        if (StretchConfig.currentProfile.stretchFactor != 1.0) {
             float aspectRatio = (float) (this.client.getWindow().getFramebufferWidth() / (float) this.client.getWindow().getFramebufferHeight());
-            aspectRatio *= StretchConfig.stretchFactor;
+            aspectRatio *= StretchConfig.currentProfile.stretchFactor;
 
             Matrix4f matrix = ProjectionCache.get((float) fov, aspectRatio, this.getFarPlaneDistance());
             cir.setReturnValue(matrix);
