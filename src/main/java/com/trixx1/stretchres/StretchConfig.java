@@ -28,7 +28,7 @@ public class StretchConfig {
         public boolean hideHand = false;
         public double swingSpeed = 1.0;
         public double swingSmoothness = 1.0;
-        public boolean oldSwing = false;
+        public boolean oldSwing = true;
         public double viewmodelX = 0.0;
         public double viewmodelY = 0.0;
         public double viewmodelZ = 0.0;
@@ -36,6 +36,13 @@ public class StretchConfig {
         public double viewmodelPitch = 0.0;
         public double viewmodelYaw = 0.0;
         public double viewmodelRoll = 0.0;
+        public double swingAngleX = -80.0;
+        public double swingAngleY = -20.0;
+        public double swingAngleZ = -20.0;
+        public boolean rgbBorders = true;
+        public double swingOffsetX = 0.0;
+        public double swingOffsetY = 0.0;
+        public double swingOffsetZ = 0.0;
     }
 
     public static void init() {

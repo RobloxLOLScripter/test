@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "id": "stretchres",
   "version": "${version}",
-  "name": "StretchRes",
-  "description": "Adjust your game stretch factor with 'O'",
+  "name": "StretchRes Ultimate",
+  "description": "The ultimate stretch resolution and viewmodel customization mod.",
   "authors": [
     "trixx1_"
   ],
@@ -23,9 +23,9 @@
     "stretchres.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.16.5",
-    "minecraft": "~1.21.1",
-    "java": ">=21",
+    "fabricloader": ">=0.14.0",
+    "minecraft": ">=1.19.2 <=1.21.1",
+    "java": ">=17",
     "fabric-api": "*"
   }
 }

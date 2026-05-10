@@ -39,18 +39,23 @@ public class HeldItemRendererMixin {
         float smoothProgress = (float) (s > 1.0 ? 1.0 - Math.pow(1.0 - speedProgress, s) : Math.pow(speedProgress, 1.0/s));
 
         if (StretchConfig.currentProfile.oldSwing) {
+            float side = (arm == Arm.RIGHT ? 1 : -1);
             float f = MathHelper.sin(smoothProgress * (float)Math.PI);
             float f1 = MathHelper.sin(MathHelper.sqrt(smoothProgress) * (float)Math.PI);
 
-            // Precise 1.8 Swing Reconstruction
-            float side = (arm == Arm.RIGHT ? 1 : -1);
-            matrices.translate(-side * 0.4F * f1, 0.2F * MathHelper.sin(MathHelper.sqrt(smoothProgress) * (float)Math.PI * 2.0F), -0.2F * f);
+            // Custom Swing Offsets
+            float ox = (float) StretchConfig.currentProfile.swingOffsetX;
+            float oy = (float) StretchConfig.currentProfile.swingOffsetY;
+            float oz = (float) StretchConfig.currentProfile.swingOffsetZ;
+
+            matrices.translate(-side * (0.4F * f1 + ox), 0.2F * MathHelper.sin(MathHelper.sqrt(smoothProgress) * (float)Math.PI * 2.0F) + oy, -0.2F * f + oz);
 
             float f2 = MathHelper.sin(smoothProgress * smoothProgress * (float)Math.PI);
             float f3 = MathHelper.sin(MathHelper.sqrt(smoothProgress) * (float)Math.PI);
             matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(side * (45.0F + f2 * -20.0F)));
-            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(side * f3 * -20.0F));
-            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(f3 * -80.0F));
+            matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(side * f3 * (float)StretchConfig.currentProfile.swingAngleZ));
+            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(f3 * (float)StretchConfig.currentProfile.swingAngleX));
+            matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(side * (float)StretchConfig.currentProfile.swingAngleY));
             matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(side * -45.0F));
 
             ci.cancel();
