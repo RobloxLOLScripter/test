@@ -4,8 +4,7 @@
   "package": "com.trixx1.stretchres.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "WindowMixin",
-    "MouseMixin"
+    "GameRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
