@@ -12,8 +12,8 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 
 public class StretchScreen extends Screen {
-    private static final Identifier HENTAI_1 = Identifier.of("stretchres", "textures/gui/hentai1.png");
-    private static final Identifier HENTAI_2 = Identifier.of("stretchres", "textures/gui/hentai2.png");
+    private static final Identifier HENTAI_1 = Identifier.of("stretchres", "gui/hentai1.png");
+    private static final Identifier HENTAI_2 = Identifier.of("stretchres", "gui/hentai2.png");
 
     private TextFieldWidget profileNameField;
     private float time = 0;
