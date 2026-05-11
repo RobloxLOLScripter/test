@@ -3,6 +3,7 @@ package com.trixx1.stretchres.client.gui;
 import com.trixx1.stretchres.StretchConfig;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.SliderWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
@@ -28,9 +29,9 @@ public class StretchScreen extends Screen {
         int centerY = this.height / 2;
 
         // --- TABS ---
-        this.addDrawableChild(ButtonWidget.builder(Text.literal(currentTab == 0 ? "§lPvP" : "PvP"), b -> { currentTab = 0; this.clearAndInit(); }).dimensions(centerX - 100, 15, 60, 20).build());
-        this.addDrawableChild(ButtonWidget.builder(Text.literal(currentTab == 1 ? "§lVisual" : "Visual"), b -> { currentTab = 1; this.clearAndInit(); }).dimensions(centerX - 30, 15, 60, 20).build());
-        this.addDrawableChild(ButtonWidget.builder(Text.literal(currentTab == 2 ? "§lConfig" : "Config"), b -> { currentTab = 2; this.clearAndInit(); }).dimensions(centerX + 40, 15, 60, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(Text.literal(currentTab == 0 ? "§lPvP" : "PvP"), b -> { currentTab = 0; this.init(this.client, this.width, this.height); }).dimensions(centerX - 100, 15, 60, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(Text.literal(currentTab == 1 ? "§lVisual" : "Visual"), b -> { currentTab = 1; this.init(this.client, this.width, this.height); }).dimensions(centerX - 30, 15, 60, 20).build());
+        this.addDrawableChild(ButtonWidget.builder(Text.literal(currentTab == 2 ? "§lConfig" : "Config"), b -> { currentTab = 2; this.init(this.client, this.width, this.height); }).dimensions(centerX + 40, 15, 60, 20).build());
 
         if (currentTab == 0) {
             // --- PVP TAB ---
@@ -128,12 +129,12 @@ public class StretchScreen extends Screen {
 
             this.addDrawableChild(ButtonWidget.builder(Text.literal("§e§lLOAD"), button -> {
                 StretchConfig.loadProfile(this.profileNameField.getText());
-                this.clearAndInit();
+                this.init(this.client, this.width, this.height);
             }).dimensions(centerX - 100, centerY - 15, 95, 20).build());
 
             this.addDrawableChild(ButtonWidget.builder(Text.literal("§c§lRESET"), button -> {
                 StretchConfig.currentProfile = new StretchConfig.Profile();
-                this.clearAndInit();
+                this.init(this.client, this.width, this.height);
             }).dimensions(centerX + 5, centerY - 15, 95, 20).build());
         }
 
@@ -174,10 +175,10 @@ public class StretchScreen extends Screen {
         try {
             int iw = 180, ih = 280;
             context.fill(1, centerY - (ih/2) - 2, iw + 7, centerY + (ih/2) + 2, borderColor);
-            context.drawTexture(HENTAI_1, 5, centerY - (ih/2), 0, 0, iw, ih, iw, ih);
+            context.drawTexture(RenderLayer::getGuiTextured, HENTAI_1, 5, centerY - (ih/2), 0, 0, iw, ih, iw, ih);
 
             context.fill(this.width - iw - 7, centerY - (ih/2) - 2, this.width - 1, centerY + (ih/2) + 2, borderColor);
-            context.drawTexture(HENTAI_2, this.width - iw - 5, centerY - (ih/2), 0, 0, iw, ih, iw, ih);
+            context.drawTexture(RenderLayer::getGuiTextured, HENTAI_2, this.width - iw - 5, centerY - (ih/2), 0, 0, iw, ih, iw, ih);
         } catch (Exception e) {}
 
         super.render(context, mouseX, mouseY, delta);
