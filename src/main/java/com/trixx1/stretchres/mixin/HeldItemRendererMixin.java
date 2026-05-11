@@ -20,8 +20,8 @@ import net.minecraft.item.ItemStack;
 @Mixin(HeldItemRenderer.class)
 public class HeldItemRendererMixin {
 
-    @Inject(method = "renderFirstPersonItem", at = @At("HEAD"), cancellable = true)
-    private void onRenderFirstPersonItem(AbstractClientPlayerEntity player, float tickDelta, float pitch, Hand hand, float swingProgress, ItemStack item, float equipProgress, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, CallbackInfo ci) {
+    @Inject(method = "renderItem", at = @At("HEAD"), cancellable = true)
+    private void onRenderItem(AbstractClientPlayerEntity player, float tickDelta, float pitch, Hand hand, float swingProgress, ItemStack item, float equipProgress, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, CallbackInfo ci) {
         if (StretchConfig.currentProfile.hideHand) {
             ci.cancel();
         }
@@ -43,12 +43,7 @@ public class HeldItemRendererMixin {
             float f = MathHelper.sin(smoothProgress * (float)Math.PI);
             float f1 = MathHelper.sin(MathHelper.sqrt(smoothProgress) * (float)Math.PI);
 
-            // Custom Swing Offsets
-            float ox = (float) StretchConfig.currentProfile.swingOffsetX;
-            float oy = (float) StretchConfig.currentProfile.swingOffsetY;
-            float oz = (float) StretchConfig.currentProfile.swingOffsetZ;
-
-            matrices.translate(-side * (0.4F * f1 + ox), 0.2F * MathHelper.sin(MathHelper.sqrt(smoothProgress) * (float)Math.PI * 2.0F) + oy, -0.2F * f + oz);
+            matrices.translate(-side * 0.4F * f1, 0.2F * MathHelper.sin(MathHelper.sqrt(smoothProgress) * (float)Math.PI * 2.0F), -0.2F * f);
 
             float f2 = MathHelper.sin(smoothProgress * smoothProgress * (float)Math.PI);
             float f3 = MathHelper.sin(MathHelper.sqrt(smoothProgress) * (float)Math.PI);

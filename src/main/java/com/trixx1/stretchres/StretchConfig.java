@@ -5,8 +5,11 @@ import com.google.gson.GsonBuilder;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,10 +42,10 @@ public class StretchConfig {
         public double swingAngleX = -80.0;
         public double swingAngleY = -20.0;
         public double swingAngleZ = -20.0;
-        public boolean rgbBorders = true;
         public double swingOffsetX = 0.0;
         public double swingOffsetY = 0.0;
         public double swingOffsetZ = 0.0;
+        public boolean rgbBorders = true;
     }
 
     public static void init() {
@@ -52,7 +55,7 @@ public class StretchConfig {
         File globalFile = new File(CONFIG_DIR, "global.json");
         String toLoad = "default";
         if (globalFile.exists()) {
-            try (FileReader reader = new FileReader(globalFile)) {
+            try (InputStreamReader reader = new InputStreamReader(new FileInputStream(globalFile), StandardCharsets.UTF_8)) {
                 Global global = GSON.fromJson(reader, Global.class);
                 if (global != null) toLoad = global.lastProfile;
             } catch (Exception ignored) {}
@@ -72,14 +75,18 @@ public class StretchConfig {
     }
 
     public static void saveProfile(String name) {
-        try (FileWriter writer = new FileWriter(new File(CONFIG_DIR, name + ".json"))) {
-            GSON.toJson(currentProfile, writer);
+        try {
+            File profileFile = new File(CONFIG_DIR, name + ".json");
+            try (OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(profileFile), StandardCharsets.UTF_8)) {
+                GSON.toJson(currentProfile, writer);
+            }
             if (!availableProfiles.contains(name)) availableProfiles.add(name);
             currentProfileName = name;
 
             Global global = new Global();
             global.lastProfile = name;
-            try (FileWriter gWriter = new FileWriter(new File(CONFIG_DIR, "global.json"))) {
+            File globalFile = new File(CONFIG_DIR, "global.json");
+            try (OutputStreamWriter gWriter = new OutputStreamWriter(new FileOutputStream(globalFile), StandardCharsets.UTF_8)) {
                 GSON.toJson(global, gWriter);
             }
         } catch (Exception e) {
@@ -90,7 +97,7 @@ public class StretchConfig {
     public static void loadProfile(String name) {
         File file = new File(CONFIG_DIR, name + ".json");
         if (file.exists()) {
-            try (FileReader reader = new FileReader(file)) {
+            try (InputStreamReader reader = new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8)) {
                 Profile loaded = GSON.fromJson(reader, Profile.class);
                 if (loaded != null) {
                     currentProfile = loaded;
