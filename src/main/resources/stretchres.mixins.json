@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.trixx1.stretchres.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "GameRendererMixin",
+    "HeldItemRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

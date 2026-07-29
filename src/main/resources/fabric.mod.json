@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "stretchres",
+  "version": "${version}",
+  "name": "StretchRes Ultimate",
+  "description": "The ultimate stretch resolution and viewmodel customization mod.",
+  "authors": [
+    "trixx1_"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/stretchres/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.trixx1.stretchres.StretchRes"
+    ],
+    "client": [
+      "com.trixx1.stretchres.client.StretchResClient"
+    ]
+  },
+  "mixins": [
+    "stretchres.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.0",
+    "minecraft": ">=1.19.2 <=1.21.4",
+    "java": ">=17",
+    "fabric-api": "*"
+  }
+}
